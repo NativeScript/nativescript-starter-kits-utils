@@ -50,7 +50,7 @@ for i in "${templates[@]}"
 do
     cd "${TEMPLATES_BASE_DIR}${i}";
     echo -e "${GREEN}Downloading the latest changes from the ${WHITE}${i}${GREEN} repository${NC}"
-    git checkout master && git pull
+    git checkout release && git pull
 
     echo -e "${GREEN}Creating a new npm version ${WHITE}${NPM_VERSION_UPDATE}${NC}"
     npm version ${NPM_VERSION_UPDATE}
