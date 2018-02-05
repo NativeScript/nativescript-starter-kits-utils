@@ -1,4 +1,11 @@
-# Manual Installation and Development
+* [Manual Installation and Development](#manual-installation-and-development)
+* [Deploy Templates](#deploy-templates)
+* [Deploy Page Templates](#deploy-page-templates)
+* [Deply Extension](#deploy-extension)
+* [Get Templates](#get-templates)
+* [Get Page Templates](#get-page-templates)
+
+## Manual Installation and Development
 
 Download the GIT repository in you favorite projects directory
 
@@ -7,19 +14,17 @@ $ git clone git@github.com:NativeScript/nativescript-starter-kits-utils.git
 
 ```
 
-# Content
-
 ## deploy-templates
 Automate npm deployment with github tags for listed Nativescript Sidekick Templates 
 
-### Enter the scripts/deploy directory and copy the script to your fusion-templates directory
+#### Enter the scripts/deploy directory and copy the script to your fusion-templates directory
 
  ```bash
  $ cp ./deploy-templates.sh PATH_TO_YOUR/fusion-templates/
  
  ```
  
- ### Running the script 
+ #### Running the script 
  
  Make the file executable 
 
@@ -29,27 +34,27 @@ Automate npm deployment with github tags for listed Nativescript Sidekick Templa
  
  ```
  
- ### Run the script with valid arguments
+ #### Run the script with valid arguments
   
- #### 1: Valid Sidekick templates directory
- #### 2: Valid simver as an argument e.g [ 3.1.1 | major | minor | patch | ]
+ ##### 1: Valid Sidekick templates directory
+ ##### 2: Valid simver as an argument e.g [ 3.1.1 | major | minor | patch | ]
 
 ```bash
  $ ./deploy-templates.sh ./your-templates-dir 3.1.4
  
  ```
 
-  ## deploy-page-templates
+## deploy-page-templates
 Automate npm deployment with github tags for listed Nativescript Sidekick Page Templates 
 
-### Enter the scripts/deploy directory and copy the script to your fusion-templates directory
+#### Enter the scripts/deploy directory and copy the script to your fusion-templates directory
 
  ```bash
  $ cp ./deploy-page-templates.sh PATH_TO_YOUR_FOLDER/
  
  ```
  
- ### Running the script 
+#### Running the script 
  
  Make the file executable 
 
@@ -59,10 +64,10 @@ Automate npm deployment with github tags for listed Nativescript Sidekick Page T
  
  ```
  
- ### Run the script with valid arguments
+#### Run the script with valid arguments
   
- #### 1: Valid Sidekick templates directory
- #### 2: Valid simver as an argument e.g [ 3.1.1 | major | minor | patch | ]
+##### 1: Valid Sidekick templates directory
+##### 2: Valid simver as an argument e.g [ 3.1.1 | major | minor | patch | ]
 
 ```bash
  $ ./deploy-page-templates.sh ./your-templates-dir 3.1.4
@@ -72,14 +77,14 @@ Automate npm deployment with github tags for listed Nativescript Sidekick Page T
 ## deploy-extension
 Automate npm deployment with github tags for the Nativescript Starter Kits Extension
 
-### Enter the scripts/deploy directory and copy the script to your nativescript-starter-kits directory
+#### Enter the scripts/deploy directory and copy the script to your nativescript-starter-kits directory
 
  ```bash
  $ cp ./deploy-extension.sh PATH_TO_YOUR/nativescript-starter-kits/
  
  ```
  
- ### Running the script 
+#### Running the script 
  
  Make the file executable 
 
@@ -89,7 +94,7 @@ Automate npm deployment with github tags for the Nativescript Starter Kits Exten
  
  ```
  
- ### Run the script with a valid simver as an argument e.g [ 3.1.1 | major | minor | patch | ]
+#### Run the script with a valid simver as an argument e.g [ 3.1.1 | major | minor | patch | ]
 
 ```bash
  $ ./deploy-extension.sh 3.1.4
@@ -97,14 +102,14 @@ Automate npm deployment with github tags for the Nativescript Starter Kits Exten
  ```
  
 ## get-templates
-### Enter the scripts/download directory and copy the script to your fusion-templates directory
+#### Enter the scripts/download directory and copy the script to your fusion-templates directory
 
  ```bash
  $ cp ./get-templates.sh PATH_TO_YOUR/fusion-templates/
  
  ```
  
- ### Running the script 
+ #### Running the script 
  
  Make the file executable 
 
@@ -114,22 +119,22 @@ Automate npm deployment with github tags for the Nativescript Starter Kits Exten
  
  ```
  
- ### Run the script 
+ #### Run the script 
 
 ```bash
  $ ./get-templates.sh
  
  ```
 
-  ## get-page-templates
-### Enter the scripts/download directory and copy the script to your fusion-templates directory
+## get-page-templates
+#### Enter the scripts/download directory and copy the script to your fusion-templates directory
 
  ```bash
  $ cp ./get-page-templates.sh /YOUR_DOWNLOAD_FOLDER
  
  ```
  
- ### Running the script 
+ #### Running the script 
  
  Make the file executable 
 
@@ -139,7 +144,7 @@ Automate npm deployment with github tags for the Nativescript Starter Kits Exten
  
  ```
  
- ### Run the script 
+ #### Run the script 
 
 ```bash
  $ ./get-page-templates.sh
