@@ -110,6 +110,11 @@ For example https://github.com/NativeScript/template-master-detail-ts/blob/maste
 }
 ```
 
+* Do provide a value for the `keywords`. Keywords can be very helpful for the discoverability of the template. Also there are a special keywords that could be used to make the template appear in the [NativeScript marketplace](https://market.nativescript.org/) in a special way and/or under certain conditions. The following keywords are supported:
+   * `ux-preview` - will add an “Preview & Vote” label on the "preview box" in the search list. It will also enable email registration and voting. This keyword should be used when adding a "preview" of a template that is not implemented but is rather an idea
+   * `category-general` - will show the template under the "General" tab in the ["Templates" page](https://market.nativescript.org/?tab=templates). This is the general or basic category, used to describe "generic" functionality 
+   * `category-healthcare` - will show the template under the "Healthcare" tab in the ["Templates" page](https://market.nativescript.org/?tab=templates). This is a special category, used to describe a template with functionality related to the healthcare industry
+
 ## Marketplace Guidelines
 * Do publish your app template to npm (https://www.npmjs.com/) using **tns-template-[custom-template-name-goes-here]-ts** format for the npm package name.
 
