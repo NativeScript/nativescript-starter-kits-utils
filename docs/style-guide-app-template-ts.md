@@ -27,24 +27,9 @@ Consider using the following workflow to facilitate app template development, te
 ```
 git clone git@github.com:NativeScript/template-blank-ts.git
 ```  
-* Execute `tns create` CLI command to create an app from **the same template** to [work-folder]\blank-ts:
-```
-tns create blank-ts --template tns-template-blank-ts
-```
-* Save the contents of [work-folder]\blank-ts\app\package.json somewhere in text editor (you will need them in a bit).  
+* Now you use the blank template, execute `tns run android` or `tns run ios` and develop / deploy / debug your app template from [work-folder]\template-blank-ts.  
 
-* Delete the whole [work-folder]\blank-ts\app folder.  
-
-* Using [Link Shell Extension](http://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html) (for Windows) create symbolic link to [work-folder]\template-blank-ts (the git-controlled folder created above) in [work-folder]\blank-ts and rename [work-folder]\blank-ts\template-blank-ts to [work-folder]\blank-ts\app.  
-
-* Replace what is in [work-folder]\blank-ts\app\package.json with the contents you saved aside above (this effectively modifies [work-folder]\template-blank-ts\package.json as well so **make sure you do not commit this change to git** -- this is a local change that allows you to actually `tns run android` or `tns run ios` the app from the [work-folder]\blank-ts folder).
-
-Now you can develop / deploy / debug your app template from [work-folder]\blank-ts, then you can commit changes to git from [work-folder]\template-blank-ts.  
-
-**Be cautious!**
-- You have to be extra careful when commiting changes to git as you don't want to commit the local "dev" changes in [work-folder]\template-blank-ts\package.json (symlinked to [work-folder]\blank-ts\app\package.json) as this will break the `tns create` CLI command for your git-controlled template. 
-- Make sure not to commit changes to [work-folder]\template-blank-ts\App_Resources\Android\app.gradle (or any other App_Resources file modified in the symlinked copy when tns-running the app) either.
-- If you want to commit actual changes to the [work-folder]\template-blank-ts\package.json file (e.g. new dependencies to the git-controlled template) you will have to make them in two places -- modify [work-folder]\blank-ts\package.json (not symlinked!) to tns-run and test the changes locally and modify [work-folder]\template-blank-ts\package.json to commit them.
+* Consider migrating the source code to your own repository to commit and push the changes made during the development.
 
 ## App Template Structure
 * Do create folders named for the feature area they represent.  
