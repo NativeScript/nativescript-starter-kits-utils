@@ -15,22 +15,25 @@ NPM_VERSION_UPDATE="$2"
 
 ### declare an array of template names
 declare -a templates=(
-    "template-drawer-navigation"
-    "template-tab-navigation"
-    "template-master-detail"
     "template-blank"
-    "template-drawer-navigation-ts"
-    "template-master-detail-ts"
     "template-blank-ts"
-    "template-tab-navigation-ts"
-    "template-drawer-navigation-ng"
-    "template-tab-navigation-ng"
-    "template-master-detail-ng"
     "template-blank-ng"
-    "template-master-detail-kinvey-ng"
-    "template-master-detail-kinvey-ts"
+    "template-blank-vue"
+    "template-drawer-navigation"
+    "template-drawer-navigation-ts"
+    "template-drawer-navigation-ng"
+    "template-tab-navigation"
+    "template-tab-navigation-ts"
+    "template-tab-navigation-ng"
+    "template-master-detail"
+    "template-master-detail-ts"
+    "template-master-detail-ng"
+    "template-master-detail-vue"
     "template-master-detail-kinvey"
-
+    "template-master-detail-kinvey-ts"
+    "template-master-detail-kinvey-ng"
+    "template-health-survey-ng"
+    "template-patient-care-ng"
 )
 
 ### Check PWD
@@ -50,7 +53,7 @@ for i in "${templates[@]}"
 do
     cd "${TEMPLATES_BASE_DIR}${i}";
     echo -e "${GREEN}Downloading the latest changes from the ${WHITE}${i}${GREEN} repository${NC}"
-    git checkout release && git pull
+    git checkout master && git pull
 
     echo -e "${GREEN}Creating a new npm version ${WHITE}${NPM_VERSION_UPDATE}${NC}"
     npm version ${NPM_VERSION_UPDATE}
