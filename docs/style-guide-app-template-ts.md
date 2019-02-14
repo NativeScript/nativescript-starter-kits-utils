@@ -1,7 +1,7 @@
 # TypeScript App Template Style Guide
 
 ## What is a NativeScript app template?
-The NativeScript app template is a blueprint for a fully functional mobile application developed with NativeScript. Each app template resides in its own git repo (e.g. [https://github.com/NativeScript/template-master-detail-ts](https://github.com/NativeScript/template-master-detail-ts)) and is usually published as an npm package as well (e.g. [https://www.npmjs.com/package/tns-template-master-detail-ts](https://github.com/NativeScript/template-master-detail-ts)). You use the tns create CLI command to create mobile app from app template like this:
+The NativeScript app template is a blueprint for a fully functional mobile application developed with NativeScript. All app templates supported by the NativeScript Team reside in a [nativescript-app-templates](https://github.com/NativeScript/nativescript-app-templates) git monorepo and are published as separate npm packages as well (e.g. [tns-template-master-detail-ts](https://www.npmjs.com/package/tns-template-master-detail-ts)). You use the tns create CLI command to create mobile app from app template like this:
 ```
 tns create my-app-name --template tns-template-master-detail-ts 
 ```
@@ -21,30 +21,12 @@ Each guideline describes either a good or bad practice, and all have a consisten
 **Avoid** indicates something you should never do.
 
 ## Getting started
-Consider using the following workflow to facilitate app template development, testing, and debugging:  
-
-* Clone the [seed template](https://github.com/NativeScript/template-blank-ts) git repo locally to [work-folder]\template-blank-ts:
+You use the tns create CLI command to get started with your own app template development, testing, and debugging:
+* Execute `tns create` CLI command to create an app from [the seed template](https://github.com/NativeScript/nativescript-app-templates/tree/master/packages/template-blank-ts) to [work-folder]\template-my-blank-ts:
 ```
-git clone git@github.com:NativeScript/template-blank-ts.git
-```  
-* Execute `tns create` CLI command to create an app from **the same template** to [work-folder]\blank-ts:
+tns create template-my-blank-ts --template tns-template-blank-ts
 ```
-tns create blank-ts --template tns-template-blank-ts
-```
-* Save the contents of [work-folder]\blank-ts\app\package.json somewhere in text editor (you will need them in a bit).  
-
-* Delete the whole [work-folder]\blank-ts\app folder.  
-
-* Using [Link Shell Extension](http://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html) (for Windows) create symbolic link to [work-folder]\template-blank-ts (the git-controlled folder created above) in [work-folder]\blank-ts and rename [work-folder]\blank-ts\template-blank-ts to [work-folder]\blank-ts\app.  
-
-* Replace what is in [work-folder]\blank-ts\app\package.json with the contents you saved aside above (this effectively modifies [work-folder]\template-blank-ts\package.json as well so **make sure you do not commit this change to git** -- this is a local change that allows you to actually `tns run android` or `tns run ios` the app from the [work-folder]\blank-ts folder).
-
-Now you can develop / deploy / debug your app template from [work-folder]\blank-ts, then you can commit changes to git from [work-folder]\template-blank-ts.  
-
-**Be cautious!**
-- You have to be extra careful when commiting changes to git as you don't want to commit the local "dev" changes in [work-folder]\template-blank-ts\package.json (symlinked to [work-folder]\blank-ts\app\package.json) as this will break the `tns create` CLI command for your git-controlled template. 
-- Make sure not to commit changes to [work-folder]\template-blank-ts\App_Resources\Android\app.gradle (or any other App_Resources file modified in the symlinked copy when tns-running the app) either.
-- If you want to commit actual changes to the [work-folder]\template-blank-ts\package.json file (e.g. new dependencies to the git-controlled template) you will have to make them in two places -- modify [work-folder]\blank-ts\package.json (not symlinked!) to tns-run and test the changes locally and modify [work-folder]\template-blank-ts\package.json to commit them.
+Now you can develop / deploy / debug your app template from [work-folder]\template-my-blank-ts, then you can commit changes to a git repo of your choice (e.g http://github.com/your-organzation/template-my-blank-ts).
 
 ## App Template Structure
 * Do create folders named for the feature area they represent.  
@@ -60,7 +42,7 @@ When the actual app is created from the template, all of the template's code wil
 
 ## Package.json Guidelines
 * Do place a package.json file in the root folder of your app template.  
-Note this is not the actual root package.json of the generated mobile app – it is only used by the `tns create` CLI command upon app creation. Do not expect that everything you place in your package.json will be transferred to the actual package.json file. Notably `scripts` property content is removed, however, if you provide preinstall / postinstall scripts they will be executed before getting removed. You can use this mechanism to generate / move settings files to the root folder of the generated app and/or generate actual "scripts" content for the resulting app package.json – see [copying settings files](https://github.com/NativeScript/template-master-detail-ts/blob/master/tools/preinstall.js) and [generating `scripts` commands on-the-fly](https://github.com/NativeScript/template-master-detail-ts/blob/master/tools/postinstall.js) for concrete examples.
+Note this is not the actual root package.json of the generated mobile app – it is only used by the `tns create` CLI command upon app creation. Do not expect that everything you place in your package.json will be transferred to the actual package.json file. You can use the mechanism implemented by the [after-createProject hook](https://github.com/NativeScript/nativescript-app-templates/blob/master/packages/template-blank-ts/hooks/after-createProject/after-createProject.js) to generate / move settings files to the root folder of the generated app.
 
 * Do provide a value for the `name` property using the format: **tns-template-[custom-template-name-goes-here]-ts**.  
 Note this property value is NOT transferred to the root package.json file generated by the tns create CLI command but can be found in the app/package.json file of the generated app.
@@ -84,44 +66,11 @@ Note this property value is NOT transferred to the root package.json file genera
 
 * Do provide a value for the following additional set of package.json properties: `description`, `license`, `readme`, `dependencies`, `devDependencies`.  
 Note these property values are transferred to the root package.json file generated by the tns create CLI command.
-For example https://github.com/NativeScript/template-master-detail-ts/blob/master/package.json has the following minimal structure:
-```
-{
-  "name": "tns-template-master-detail-ts",
-  "displayName": "Master-Detail with Firebase",
-  "main": "app.js",
-  "version": "3.2.1",
-  "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-master-detail-ts"
-  },
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
-  "dependencies": {
-	...
-  },
-  "devDependencies": {
-	...
-  }
-}
-```
 
 * Do provide a value for the `keywords`. Keywords can be very helpful for the discoverability of the template. Also there are a special keywords that could be used to make the template appear in the [NativeScript marketplace](https://market.nativescript.org/) in a special way and/or under certain conditions. The following keywords are supported:
    * `ux-preview` - will add an “Preview & Vote” label on the "preview box" in the search list. It will also enable email registration and voting. This keyword should be used when adding a "preview" of a template that is not implemented but is rather an idea
    * `category-general` - will show the template under the "General" tab in the ["Templates" page](https://market.nativescript.org/?tab=templates). This is the general or basic category, used to describe "generic" functionality 
    * `category-healthcare` - will show the template under the "Healthcare" tab in the ["Templates" page](https://market.nativescript.org/?tab=templates). This is a special category, used to describe a template with functionality related to the healthcare industry
-
-## Marketplace Guidelines
-* Do publish your app template to npm (https://www.npmjs.com/) using **tns-template-[custom-template-name-goes-here]-ts** format for the npm package name.
-
-* Do provide a screenshot preview to be used in a future NativeScript Marketplace integration under **tools/assets/marketplace.png** in your app template folder structure.  
-Check [tools/postinstall.js](https://github.com/NativeScript/template-master-detail-ts/blob/master/tools/postinstall.js) that implements a mechanism for removing the "tools" infrastructure folder from the generated app.
-
-* Do provide correct `repository` property value in the root package.json file of your app template (see the "Package.json guidelines" section above for additional package.json requirements).
 
 ## Styling
 * Consider using the [NativeScript core theme](https://github.com/NativeScript/theme) for styling your app template.
@@ -372,8 +321,12 @@ A few terms are unambiguously services. They typically indicate agency by ending
 * Avoid putting app logic in **app.ts**. Instead, consider placing it in a page, view model or service.
 
 ## NativeScript Marketplace Guidelines
+* Do publish your app template to npm (https://www.npmjs.com/) using **tns-template-[custom-template-name-goes-here]-ts** format for the npm package name.
 
-[Read more](https://github.com/NativeScript/marketplace-feedback/blob/master/docs/template-submission.md) how to submit your app template to  [NativeScript Marketplace](https://market.nativescript.org).
+* Do provide a screenshot preview to be used in a future NativeScript Marketplace integration under **tools/assets/marketplace.png** in your app template folder structure.  
+Check [the after-createProject hook](https://github.com/NativeScript/nativescript-app-templates/blob/master/packages/template-blank-ts/hooks/after-createProject/after-createProject.js) that implements a mechanism for removing the "tools" infrastructure folder from the generated app.
+
+* Do provide correct `repository` property value in the root package.json file of your app template (see the "Package.json guidelines" section above for additional package.json requirements).
 
 ## More Guidelines
 
