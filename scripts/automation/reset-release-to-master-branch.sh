@@ -12,22 +12,25 @@ NC='\033[0m' # No Color
 
 ### declare an array of template names
 declare -a templates=(
-    "template-drawer-navigation"
-    "template-tab-navigation"
-    "template-master-detail"
     "template-blank"
-    "template-drawer-navigation-ts"
-    "template-master-detail-ts"
     "template-blank-ts"
-    "template-tab-navigation-ts"
-    "template-drawer-navigation-ng"
-    "template-tab-navigation-ng"
-    "template-master-detail-ng"
     "template-blank-ng"
-    "template-master-detail-kinvey-ng"
-    "template-master-detail-kinvey-ts"
+    "template-blank-vue"
+    "template-drawer-navigation"
+    "template-drawer-navigation-ts"
+    "template-drawer-navigation-ng"
+    "template-tab-navigation"
+    "template-tab-navigation-ts"
+    "template-tab-navigation-ng"
+    "template-master-detail"
+    "template-master-detail-ts"
+    "template-master-detail-ng"
+    "template-master-detail-vue"
     "template-master-detail-kinvey"
-
+    "template-master-detail-kinvey-ts"
+    "template-master-detail-kinvey-ng"
+    "template-health-survey-ng"
+    "template-patient-care-ng"
 )
 
 ### Check PWD
