@@ -21,12 +21,15 @@ Each guideline describes either a good or bad practice, and all have a consisten
 **Avoid** indicates something you should never do.
 
 ## Getting started
-You use the tns create CLI command to get started with your own app template development, testing, and debugging:
-* Execute `tns create` CLI command to create an app from [the seed template](https://github.com/NativeScript/nativescript-app-templates/tree/master/packages/template-blank-ts) to [work-folder]\template-my-blank-ts:
+Consider using the following workflow to facilitate app template development, testing, and debugging:  
+
+* Clone the [seed template](https://github.com/NativeScript/template-blank-ts) git repo locally to [work-folder]\template-blank-ts:
 ```
-tns create template-my-blank-ts --template tns-template-blank-ts
-```
-Now you can develop / deploy / debug your app template from [work-folder]\template-my-blank-ts, then you can commit changes to a git repo of your choice (e.g http://github.com/your-organzation/template-my-blank-ts).
+git clone git@github.com:NativeScript/template-blank-ts.git
+```  
+* Now you use the blank template, execute `tns run android` or `tns run ios` and develop / deploy / debug your app template from [work-folder]\template-blank-ts.  
+
+* Consider migrating the source code to your own repository to commit and push the changes made during the development.
 
 ## App Template Structure
 * Do create folders named for the feature area they represent.  
